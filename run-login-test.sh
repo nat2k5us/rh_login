@@ -18,4 +18,4 @@
 python3 -m venv path/to/venv                                                                     ─╯
 source path/to/venv/bin/activate  # Unix/macOS
 pip3 install -r requirements.txt
-python3 login-test.py
+python3 login-test.py "$@"

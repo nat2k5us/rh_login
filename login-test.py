@@ -14,8 +14,13 @@ def login(mfa_code):
     if not username or not password:
         print("Error: RH_USERNAME or RH_PASSWORD environment variables are not set.")
         exit(1)
-    # Add your login logic here
-    print(f"User parameter: {mfa_code}")
+    if mfa_code == "totp":
+        mfa_code = pyotp.TOTP("My2factorAppHere").now()
+        print(f"TOTP: {mfa_code}")
+    else:
+        # Add your login logic here
+        print(f"User parameter: {mfa_code}")
+        
     login = r.login(username, password, mfa_code=mfa_code)
     print(f"Login: {login}")
 
